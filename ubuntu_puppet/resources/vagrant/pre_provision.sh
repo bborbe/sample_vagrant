@@ -2,6 +2,8 @@
 # Script for Vagrant provisioning
 export DEBIAN_FRONTEND=noninteractive
 
+echo "pre provision: started"
+
 # update / upgrade
 apt-get update
 apt-get -y dist-upgrade
@@ -44,5 +46,7 @@ chmod 0700 /root/.ssh/
 chmod -R 0600 /root/.ssh/* 
 chmod 0644 /root/.ssh/*.pub
 chmod 0644 /root/.ssh/known_hosts
+
+echo "pre provision: finished"
 
 exit 0
