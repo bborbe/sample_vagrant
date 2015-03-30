@@ -5,6 +5,7 @@ export DEBIAN_FRONTEND=noninteractive
 echo "post provision: started"
 
 sudo locale-gen UTF-8
+sudo touch /var/lib/cloud/instance/locale-check.skip
 
 echo "post provision: finished"
 
