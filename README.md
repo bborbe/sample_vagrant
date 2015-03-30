@@ -1,2 +1,6 @@
-# vagrant
-vagrant
+# vagrant #
+
+## debug ##
+
+VAGRANT_LOG=info vagrant up
+
