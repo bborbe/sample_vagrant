@@ -28,20 +28,20 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     #vb.customize ["modifyvm", :id, "--nic2", "hostonly"] 
   end
 
-  # Pre-provision, bootstrap puppet 
+  # Pre-provision, bootstrap puppet
   config.vm.provision :shell, :path => "resources/vagrant/pre_provision.sh"
 
   # ssh private key configuration
-  config.ssh.private_key_path = "resources/vagrant/id_rsa_vagrant"
+# config.ssh.private_key_path = "resources/vagrant/id_rsa_vagrant"
 
-#  config.vm.provision "puppet" do |puppet|
-#    puppet.manifests_path = "resources/puppet"
-#    puppet.manifest_file  = "localdev.pp"
-#    puppet.module_path = "resources/puppet/modules"
-#    puppet.working_directory = "/tmp/vagrant-puppet"
-#    puppet.options = "--verbose --debug"
-#    puppet.hiera_config_path = "resources/puppet/hieradata/common.yaml"
-#  end
+# config.vm.provision "puppet" do |puppet|
+#   puppet.manifests_path = "resources/puppet"
+#   puppet.manifest_file  = "localdev.pp"
+#   puppet.module_path = "resources/puppet/modules"
+#   puppet.working_directory = "/tmp/vagrant-puppet"
+#   puppet.options = "--verbose --debug"
+#   puppet.hiera_config_path = "resources/puppet/hieradata/common.yaml"
+# end
 
   # post provision 
   config.vm.provision :shell, :path => "resources/vagrant/post_provision.sh"
@@ -56,4 +56,5 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # argument is a set of non-required options.
   config.vm.synced_folder "./data", "/data"
 
+  config.ssh.shell = "bash -c 'BASH_ENV=/etc/profile exec bash'"
 end

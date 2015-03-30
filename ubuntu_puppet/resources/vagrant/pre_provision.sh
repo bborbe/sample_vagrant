@@ -1,0 +1,48 @@
+#!/bin/bash
+# Script for Vagrant provisioning
+export DEBIAN_FRONTEND=noninteractive
+
+# update / upgrade
+apt-get update
+apt-get -y dist-upgrade
+
+# install
+apt-get -y install puppet vim htop tree git ssmtp screen curl wget
+
+# configure ssh
+mkdir -p /root/.ssh/
+echo "-----BEGIN RSA PRIVATE KEY-----
+MIIEpAIBAAKCAQEAtAz34ztxKsS7lYZfb4yf/YlNdCOrbc+l8UygHeppEMMJDac9
+Z2zn1m6ymNOnciTGMcfcsyOq+GsyyIwrDGTYWJA4WgYmWB+Mg1DMpS1YFeRHWiIU
+TRnpJ19q04Q5qAAXEqTF8vrLaHSsQSdqZ/HOpyN3yLAQLZVU7nuZM1hRC9Mbf31B
+R77sYo/21JfQmK88XnSm1lWzuI4KMCwTxzz1d75vKd8tlKhaNwSQXPbg7AZeFBIV
+JkBwotluN113nwyWIIsKM3FuC2y6x0SHDAjr+FtE0WjN5LSzmxUShGIhySepNVtZ
+tBJ9nhRkWvquRHDvggaEeyzQvtDibVg4SZ6y+wIDAQABAoIBAQCqZjuUSoVnvJjr
+giiAIc6o3HD5IWj0nDiojaRbq6WTv4Gp8kUixOcFAe70xBsM49DO/B/bSj5crNd7
+BW0YZbh62ML8MCXJ8NHC1Y1YJfnffhQpMWeVMJiAMsWfONx4Kt2rP1Y4BzLKwODl
+KLCDf03c0KxkunwVJ+chbMgo18ScMq/f+WjNv0rSiJiM2IMLSK6zh8Is1G5EeaFZ
+gEM2COHH8Je2CxJzrBJQTooxZ5kdyqGryF8YXIoFsxlmWXGQNIo2o+qWDQXGmWc0
+p4lDoborR+HrVw8orvkRfAiWs3y+8bobAVC5wcscPFVxVK/ufC0m7AvYXKyAgTdr
+buinQCUBAoGBAOWiXPcviqIBVRK4shLsEIrwSR8ZPzx/9h2n51z5hS7N8abc8APU
+xxLjVAFTN7eYOr9hM/KcAL5YPAkm1l20PSgpbe9KzPhcmbzHQMUJH7QrmeYyaRKW
+fPvo0O0H3lrCAY27UNA3Lw0QxFriLJhV3CQgzJEpI/U2E+S3b4U0AA/LAoGBAMi5
+MhVulTNKqePKEh6ak2zdUeiIZPkmItAW8FzmCU1HwVvvrP1xTLt4qwBLjBHk7vxq
+Hgx64TfHq+TggXSMg7S2gJZ1ox+FKDEF7iv1MhFpGBce4Ry/QEMrMgsPPIpLidrW
+jDBr8GVuvSjRKAaII0qfwqPCIjJJtqbRMKHSpyORAoGAawa2j5q/4Wv/i587l+gg
+ebEuU2k/+OGnAwFrqwC82yivVVcqIo78TchYMdnoYRB5aRNT0+Jz0kNrj9RjGv9T
+dbGBhIL3b1YxbTPs8yiidyXPL+QU5s3u6LYFEkSVlPVRJg7ExpbBvjQvYDCEGmgC
+F3CWB54GHVacBQCd4JZw5OsCgYBwHXFqIzBXS/cE8xOX4INEJYLgvX6Y48JCNO3h
+FeRQNCo+resUTTqs5EOvkIMWY6dRefx6wBAYVgEfgH8OmIXgZKgCYobQzlGawFM+
+XmCu9OKt12Op6PF+ExyKrOIF5ReFEp2PVlsabPZfXCRdMaF0xzOywHbVW/MXznS5
+jq4o4QKBgQCbeR7IV6j0iwBNCYJ5ZZilcWKXqGHuJG3W8IR9IS7XXtIDu1mpIJiv
+JJXSDof0+8xIkBriqqiWfMll/6cTlQ1N0tqirBN1hwofwLwe/ILq9CwYxZNeKV3X
+L3ZJcMz7sWBiT+TMBquv/+ljv5/rwnb5xz1vnWcXQtF279FwrVhW8g==
+-----END RSA PRIVATE KEY-----" > /root/.ssh/id_rsa
+echo "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC0DPfjO3EqxLuVhl9vjJ/9iU10I6ttz6XxTKAd6mkQwwkNpz1nbOfWbrKY06dyJMYxx9yzI6r4azLIjCsMZNhYkDhaBiZYH4yDUMylLVgV5EdaIhRNGeknX2rThDmoABcSpMXy+stodKxBJ2pn8c6nI3fIsBAtlVTue5kzWFEL0xt/fUFHvuxij/bUl9CYrzxedKbWVbO4jgowLBPHPPV3vm8p3y2UqFo3BJBc9uDsBl4UEhUmQHCi2W43XXefDJYgiwozcW4LbLrHRIcMCOv4W0TRaM3ktLObFRKEYiHJJ6k1W1m0En2eFGRa+q5EcO+CBoR7LNC+0OJtWDhJnrL7 bborbe@local" > /root/.ssh/id_rsa.pub 
+echo "" > /root/.ssh/known_hosts
+chmod 0700 /root/.ssh/
+chmod -R 0600 /root/.ssh/* 
+chmod 0644 /root/.ssh/*.pub
+chmod 0644 /root/.ssh/known_hosts
+
+exit 0
