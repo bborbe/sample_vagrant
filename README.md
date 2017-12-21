@@ -1,8 +1,22 @@
 # Vagrant 
 
+## Run
+
+```
+vagrant up
+```
+
 ## Debug
 
+```
 VAGRANT_LOG=info vagrant up
+```
+
+## Update
+
+```
+vagrant box update
+```
 
 ## Copyright and license
 
